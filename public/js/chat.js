@@ -46,8 +46,10 @@ $(function(){
 
 	// on connection to server get the id of person's room
 	socket.on('connect', function(){
-
+//
 		socket.emit('load', id);
+		
+		console.log("connected - client side");
 	});
 
 	// save the gravatar url
@@ -57,9 +59,10 @@ $(function(){
 
 	// receive the names and avatars of all people in the chat room
 	socket.on('peopleinchat', function(data){
-
+		console.log("-------chatjs - peopleinchat----------");
+		
 		if(data.number === 0){
-
+			console.log("-------chatjs - data-number=0----------");
 			showMessage("connected");
 
 			loginForm.on('submit', function(e){
@@ -90,7 +93,7 @@ $(function(){
 		}
 
 		else if(data.number === 1) {
-
+			console.log("-------chstjs - data-number=1----------");
 			showMessage("personinchat",data);
 
 			loginForm.on('submit', function(e){
